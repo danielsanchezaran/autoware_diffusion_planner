@@ -112,8 +112,8 @@ public:
   void on_timer();
   void on_map(const HADMapBin::ConstSharedPtr map_msg);
   void load_model(const std::string & model_path);
+  void publish_predictions(Ort::Value & predictions);
   void publish_debug_markers(InputDataMap & input_data_map) const;
-  void publish_predictions(Ort::Value & predictions) const;
   std::optional<std::vector<Ort::Value>> do_inference(InputDataMap & input_data_map);
   SetParametersResult on_parameter(const std::vector<rclcpp::Parameter> & parameters);
   InputDataMap create_input_data();
@@ -127,7 +127,7 @@ public:
   // postprocessing
   Trajectory create_trajectory(
     std::vector<Ort::Value> & predictions, Eigen::Matrix4f & transform_ego_to_map);
-
+  std::optional<Eigen::MatrixXf> prev_prediction_matrix_{std::nullopt};
   // current state
   Odometry ego_kinematic_state_;
 
