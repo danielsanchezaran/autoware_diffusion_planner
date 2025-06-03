@@ -1,4 +1,4 @@
-# Autoware Diffusion Planner
+# Autoware Diffusion Planner [Archieved, please visit https://github.com/tier4/autoware_diffusion_planner for the latest version]
 
 ## Overview
 
